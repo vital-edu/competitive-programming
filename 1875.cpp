@@ -3,40 +3,38 @@
 using namespace std;
 
 int main() {
-  int cases;
+  unsigned int cases;
   char sent[] = {'R', 'G', 'B', 'R'};
 
   cin >> cases;
 
-  for (int i = 0; i < cases; i++) {
-    int t[3] = {0, 0, 0};
-    int gols;
+  for (unsigned int i = 0; i < cases; i++) {
+    unsigned int t[3] = {0, 0, 0};
+    unsigned int gols;
     char a, b;
 
     cin >> gols;
 
-    for (int j = 0; j < gols; j++) {
+    for (unsigned int j = 0; j < gols; j++) {
       cin >> a >> b;
 
-      for (int h = 0; h < 4; h++) {
+      for (unsigned int h = 0; h < 3; h++) {
         if (a == sent[h]) {
           if (b == sent[h+1]) {
             t[h] = t[h] + 2;
-          } else if((a != b)) {
+          } else {
             t[h]++;
           }
-          h = 20;
+          break;
         }
       }
     }
 
-    if (t[0] > t[1]) {
-      cout << ((t[0] > t[2]) ? "red" : "empate");
-    } else if (t[1] > t[0]) {
-      cout << ((t[1] > t[2]) ? "green" : "empate");
-    } else if (t[2] > t[0]) {
-      cout <<  ((t[2] > t[1]) ? "blue" : "empate");
-    } else cout << "trempate";
+    if (t[0] == t[1] && t[0] == t[2]) cout << "trempate";
+    else if (t[0] > t[1] && t[0] > t[2]) cout << "red";
+    else if (t[1] > t[0] && t[1] > t[2]) cout << "green";
+    else if (t[2] > t[0] && t[2] > t[1]) cout << "blue";
+    else if (t[0] == t[1] || t[0] == t[2] || t[1] == t[2]) cout << "empate";
 
     cout << endl;
   }
