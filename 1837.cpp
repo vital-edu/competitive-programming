@@ -2,25 +2,24 @@
 
 using namespace std;
 
-int mdc(int a, int b) {
-  return b == 0 ? a : mdc(b, a % b);
-
-  if (b > a) return 0;
-}
-
-int resto(int a, int b) {
-
-}
-
 int main() {
-  int a, b;
-  int q, r;
+  int a = 0, b = 0;
+  int q = 0, r = 0;
 
   cin >> a >> b;
 
-  q = mdc(a,b);
+  q = a / b;
+  r = a % b;
 
-  cout << mdc(a,b) << " " << a % b;
+  if (a < 0 && b > 0 && r != 0) {
+     q--;
+    r += b;
+  } else if (a < 0 && b < 0 && r != 0) {
+    q++;
+    r -= b;
+  }
+
+  cout << q << " " << r << endl;
 
   return 0;
 }
