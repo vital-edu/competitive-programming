@@ -3,30 +3,30 @@
 
 using namespace std;
 
+map<unsigned long long, unsigned long long> mapa;
+unsigned long long fib(int a) {
+  
+  if (mapa.find(a) != mapa.end()) return mapa[a];
+
+  if (a == 1 || a == 1) return 1;
+
+  mapa[a] = fib(a-1) + fib(a-2);
+  return mapa[a];
+
+}
+
 int main() {
-  unsigned long long a = 0;
-  unsigned long long b = 1;
-  int t;
+  int n;
+  int cases;
+  mapa[0] = 0;
+  mapa[1] = 1;
+  mapa[2] = 1;
 
-  map<int, int> fib;
-
-  fib[0] = 0;
-
-  int aux;
-
-  for (int i = 0; i <= 60; i++) {
-    aux = a + b;
-    cout << " " << aux;
-    a = b;
-    b = aux;
-
-
-  //   // cin >> a;
-    // if (fib.find(i) == fib.end()) {
-    //   fib[a] = aux;
-    // }
-
-    // cout << fibonnaci(i) << " ";
+ 
+  cin >> cases;
+  for (int i = 0; i < cases; i++) {
+    cin >> n;
+    cout << "Fib(" << n << ") = " << fib(n) << endl;
   }
 
   return 0;
