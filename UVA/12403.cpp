@@ -16,7 +16,7 @@ int main() {
       cin >> v;
       res += v;
     }
-      else cout << res << endl;
+    else cout << res << endl;
   }
   return 0;
 }
